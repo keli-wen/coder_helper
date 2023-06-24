@@ -1,0 +1,62 @@
+#sidebar {
+    width: 200px;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+.tab {
+    display: block;
+    margin-bottom: 10px;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}
+
+.tab:hover {
+    background-color: #555;
+}
+.tab-active {
+    background-color: #5b5757;
+}
+
+#content {
+    margin-left: 220px;
+    padding: 20px;
+}
+
+/* 用来美化用户信息的 */
+#user-info {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    /* 用来控制用户信息的位置 */
+    bottom: 50px;
+    left: 20px;
+}
+
+#user-avatar {
+    width: 20px;
+    height: 20px;
+    /* ensure the image does not exceed its parent's width */
+    max-width: 100%;
+    /* ensure the image does not exceed its parent's height */
+    max-height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+#username {
+    color: white;
+    font-size: 18px;
+}
