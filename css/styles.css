@@ -60,3 +60,39 @@
     color: white;
     font-size: 18px;
 }
+
+#error-details, #description {
+    font-family: Monaco;
+    font-size: 14px;
+}
+
+
+.flex-row {
+    display: flex;
+    height: calc(100vh - 100px);  /* subtracting some value for header and margin */
+    margin: 20px;
+  }
+  
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+  
+.flex-grow {
+    flex: 1;
+    margin-bottom: 20px;
+    overflow: auto;
+}
+  
+.btn-group {
+    width: 100%; /* Add this to make the .btn-group the same width as the textarea */
+    display: flex;
+}
+  
+.btn-group button {
+    width: 50%;
+    flex: 1; /* This will make each button take up an equal amount of space in the .btn-group */
+    box-sizing: border-box; /* To include padding and border in the element's total width and height */
+}
+  
+  

@@ -1,7 +1,37 @@
 <!DOCTYPE html>
 <html>
-<body>
-    <h1>Welcome to Home</h1>
-    <p>This is the home page. Here, you can find the latest updates and news.</p>
-</body>
+  <head>
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row flex-row">
+        <div class="col-sm flex-column">
+          <h3>Error Details</h3>
+          <textarea id="error-details" class="form-control flex-grow"></textarea>
+
+          <h3>Personal Description</h3>
+          <textarea id="description" class="form-control flex-grow"></textarea>
+
+          <button id="query-btn" class="btn btn-primary">Query</button>
+        </div>
+
+        <div class="col-sm flex-column">
+          <h3>AI Response</h3>
+          <textarea id="api-response" class="form-control flex-grow"></textarea>
+
+          <div class="btn-group" role="group" aria-label="Button group">
+            <button id="copy-btn" class="btn btn-secondary">Copy</button>
+            <button id="accept-btn" class="btn btn-success">Accept</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="../js/renderer.js"></script>
+  </body>
 </html>
