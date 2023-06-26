@@ -3,6 +3,8 @@ const {
   ipcMain,
   dialog
 } = require('electron')
+const axios = require('axios');  // 你需要先使用 npm install axios 安装这个库
+
 const fs = require('fs');
 const path = require('path');
 
@@ -10,7 +12,7 @@ let mainWindow;
 
 app.on('ready', () => {
     mainWindow = new BrowserWindow({
-        title: 'IELTS HELPER',
+        title: 'Coder Helper',
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false
@@ -27,7 +29,7 @@ ipcMain.on('change-tab', (event, tabName) => {
             return;
         }
 
-        event.sender.send('load-content', data);
+        event.sender.send('load-content', tabName, data);
     });
 });
 
@@ -59,4 +61,17 @@ ipcMain.on('open-file-dialog', (event) => {
     }).catch(err => {
         console.error(err);
     });
+});
+
+// 接收渲染进程的消息
+ipcMain.on('query', (event, data) => {
+    // 发送 HTTP 请求到 Python 后端
+    axios.post('http://127.0.0.1:8900/query', data)
+        .then(response => {
+            // 将答案发送回渲染进程
+            event.reply('query-reply', response.data.answer);
+        })
+        .catch(error => {
+            console.log('Error:', error);
+        });
 });

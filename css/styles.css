@@ -61,7 +61,7 @@
     font-size: 18px;
 }
 
-#error-details, #description {
+#error-details, #description, #api-response {
     font-family: Monaco;
     font-size: 14px;
 }
@@ -94,5 +94,4 @@
     flex: 1; /* This will make each button take up an equal amount of space in the .btn-group */
     box-sizing: border-box; /* To include padding and border in the element's total width and height */
 }
-  
   
