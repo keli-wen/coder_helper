@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MarkDown It</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row flex-row">
+        <div class="col-sm flex-column">
+          <h3><b>Original Text</b></h3>
+          <textarea id="original-text" class="form-control flex-grow"></textarea>
+
+          <button id="markdown-it-btn" class="btn btn-primary">MarkDown It 💎</button>
+          <div id="wait-progress" class="progress" style="margin-top: 10px; display: none;">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+          </div>
+        </div>
+
+        <div class="col-sm flex-column">
+          <h3>🌟 <b>MarkDown</b> 🌟</h3>
+          <textarea id="markdown-response" class="form-control flex-grow"></textarea>
+          <div id="markdown-preview" style="display: none;"></div> <!-- 添加一个用于显示渲染后的 Markdown 的元素 -->
+
+          <div class="btn-group" role="group" aria-label="Button group">
+            <button id="copy-btn" class="btn btn-secondary">Copy</button>
+            <button id="preview-btn" class="btn btn-success">Preview</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="../js/renderer.js"></script>
+  </body>
+</html>

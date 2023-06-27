@@ -1,3 +1,26 @@
+@font-face {
+  font-family: 'Nexus';
+  src: url('../fonts/NexusSans-Regular.otf');
+}
+
+@font-face {
+  font-family: 'Nexus';
+  src: url('../fonts/NexusSans-Bold.otf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Nexus';
+  src: url('../fonts/NexusSans-Italic.otf');
+  font-weight: normal;
+  font-style: italic;
+}
+  
+body {
+  font-family: 'Nexus' !important;
+}
+
 #sidebar {
     width: 200px;
     height: 100%;

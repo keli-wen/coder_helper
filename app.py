@@ -84,5 +84,37 @@ def query():
 
     return jsonify({"answer": answer}), 200
 
+@app.route("/markdownIt", methods=["POST"])
+def markdownIt():
+    # 获取请求体中的数据
+    data = request.json
+    original = data["original"]
+
+    prompt = f"""
+    下面是可能是一段杂乱无绪的原始文本，具体如下：
+    ```
+    {original}
+    ```
+
+    我希望你能通过你的理解，将其转换成 Markdown 格式的文本，
+    用 Markdown 的格式回答。我要求你尽可能的使用所有可用的 Markdown 语法。
+    并且对其进行合理的分段便于阅读。
+
+    最后，你只是进行格式的整理，不需要<<<<任何的改动>>>>，不需要任何额外的废话。
+    直接返回转化好的 Markdown 文本即可。
+    下面请给出你的回答，直接返回内容，不需要任何描述性语言。
+    """
+    print("start ✨MarkDown It!")
+    history.append({"role": "user", "content": prompt})
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages= history
+    )
+    answer = response["choices"][0]["message"]["content"]
+    history.append({"role": "assistant", "content": answer})
+    print(red_color("AI:"), answer)
+
+    return jsonify({"answer": answer}), 200
+
 if __name__ == "__main__":
     app.run(port=8900)
