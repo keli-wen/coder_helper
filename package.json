@@ -14,7 +14,8 @@
     "axios": "^1.4.0",
     "bootstrap": "^5.3.0",
     "electron": "^25.1.1",
-    "jquery": "^3.7.0"
+    "jquery": "^3.7.0",
+    "marked": "^5.1.0"
   },
   "devDependencies": {
     "eslint": "^8.42.0",

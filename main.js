@@ -98,3 +98,16 @@ ipcMain.on('accept-and-save', (event, data) => {
             console.log('Error:', error);
         });
 });
+
+// 接收 markdown-it 的消息.
+ipcMain.on('markdownIt', (event, data) => {
+    // 发送 HTTP 请求到 Python 后端
+    axios.post('http://127.0.0.1:8900/markdownIt', data)
+        .then(response => {
+            // 将答案发送回渲染进程
+            event.reply('markdownIt-reply', response.data.answer);
+        })
+        .catch(error => {
+            console.log('Error:', error);
+        });
+});
