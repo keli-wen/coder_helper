@@ -19,13 +19,24 @@ function changeTab(tabName) {
 ipcRenderer.on('load-content', (event, tabName, content) => {
   document.getElementById('content').innerHTML = content;
 
-  // 如果切换到了 'home'，则绑定事件监听器
+  // 如果切换到了 'home'，则绑定事件监听器.
   if (tabName === 'home') {
-    console.log("123");
+    // 绑定一个 queryOpenAI 函数到 'query-btn' 按钮.
     let queryButton = document.getElementById('query-btn');
     if (queryButton) {
       console.log("ok");
       queryButton.addEventListener('click', queryOpenAI);
+    }
+
+    // 绑定一个复制功能到 'copy-btn' 按钮.
+    let copyButton = document.getElementById('copy-btn');
+    if (copyButton) {
+      copyButton.addEventListener('click', () => {
+        let answer = document.getElementById('api-response').value;
+        navigator.clipboard.writeText(answer);
+        // 显示消息提示已复制
+        alert("已复制到剪贴板！");
+      });
     }
   }
 });
