@@ -38,6 +38,12 @@ ipcRenderer.on('load-content', (event, tabName, content) => {
         alert("已复制到剪贴板！");
       });
     }
+
+    // 绑定一个 AcceptAndSave 函数到 'accept-btn' 按钮.
+    let acceptButton = document.getElementById('accept-btn');
+    if (acceptButton) {
+      acceptButton.addEventListener('click', AcceptAndSave);
+    }
   }
 });
 
@@ -61,7 +67,6 @@ function queryOpenAI() {
   ipcRenderer.send('query', { error, description });
 }
 
-
 ipcRenderer.on('query-reply', (event, answer) => {
   // 隐藏加载动画
   let waitProgress = document.getElementById('wait-progress');
@@ -70,3 +75,11 @@ ipcRenderer.on('query-reply', (event, answer) => {
   document.getElementById('api-response').value = answer;
 });
 
+// 用来 Accept Response 的函数.
+function AcceptAndSave() {
+  let answer = document.getElementById('api-response').value;
+  let error = document.getElementById('error-details').value;
+  let description = document.getElementById('description').value;
+  let data = { error, description, answer };
+  ipcRenderer.send('accept-and-save', data);
+}

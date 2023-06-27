@@ -75,3 +75,26 @@ ipcMain.on('query', (event, data) => {
             console.log('Error:', error);
         });
 });
+
+// 接收渲染进程的 accept-and-save 消息.
+ipcMain.on('accept-and-save', (event, data) => {
+    // 发送 HTTP 请求到 Python 后端
+    axios.post('http://127.0.0.1:8900/accept-and-save', data)
+        .then(response => {
+            if (response.data.success) {
+                // 显示消息提示已保存
+                dialog.showMessageBox({
+                    type: 'info',
+                    message: '已保存！',
+                    detail: '知识点已存储到数据库中。'
+                });
+            } else {
+                // 显示消息提示保存失败
+                dialog.showErrorBox('保存失败',
+                    '无法将您的反馈保存到数据库中。');
+            }
+        })
+        .catch(error => {
+            console.log('Error:', error);
+        });
+});
