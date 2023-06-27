@@ -22,7 +22,7 @@ body {
 }
 
 #sidebar {
-    width: 200px;
+    width: 250px;
     height: 100%;
     position: fixed;
     left: 0;
@@ -53,7 +53,7 @@ body {
 }
 
 #content {
-    margin-left: 220px;
+    margin-left: 270px;
     padding: 20px;
 }
 
@@ -63,7 +63,7 @@ body {
     align-items: center;
     position: absolute;
     /* 用来控制用户信息的位置 */
-    bottom: 50px;
+    bottom: 0.5em;
     left: 20px;
 }
 

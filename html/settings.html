@@ -1,7 +1,59 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <title>Search</title>
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/styles.css">
+    </head>
 <body>
     <h1>Settings</h1>
     <p>This is the settings page. Here, you can customize your preferences and configurations.</p>
+    
+    <!-- Search bar -->
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search..." id="search-input">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="search-btn">Search</button>
+        </div>
+    </div>
+
+    <!-- Search Results -->
+    <div id="search-results" class="my-4">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Filename</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <!-- File names will be inserted here -->
+                <tr>
+                    <td>1</th>
+                    <td>File1.md</th>
+                </tr>
+                <tr>
+                    <td>2</th>
+                    <td>File2.md</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+
+    <!-- Pagination -->
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </nav>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="../js/renderer.js"></script>
 </body>
 </html>
