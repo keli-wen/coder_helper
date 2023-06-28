@@ -68,8 +68,8 @@ body {
 }
 
 #user-avatar {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     /* ensure the image does not exceed its parent's width */
     max-width: 100%;
     /* ensure the image does not exceed its parent's height */

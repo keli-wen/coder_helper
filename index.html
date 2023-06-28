@@ -13,7 +13,7 @@
       <div id="user-info">
         <!-- alt: 用来代替文本 -->
         <img id="user-avatar" src="images/avatar.png" alt="User Avatar">
-        <span id="username">Username</span>
+        <span id="username">Last Whisper</span>
       </div>
     </div>
 
@@ -21,6 +21,13 @@
       <!-- Content will be loaded here -->
     </div>
     
+    <script>
+      // 页面加载完成后执行的代码
+      window.onload = function() {
+        // 默认点击 "home" 按钮
+        changeTab("home");
+      };
+    </script>    
     <script src="main.js"></script>
     <script src="js/renderer.js"></script>      
   </body>
