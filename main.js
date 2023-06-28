@@ -7,7 +7,6 @@ const axios = require('axios');  // 你需要先使用 npm install axios 安装�
 
 const fs = require('fs');
 const path = require('path');
-
 let mainWindow;
 
 app.on('ready', () => {
@@ -15,8 +14,10 @@ app.on('ready', () => {
         title: 'Coder Helper',
         webPreferences: {
             nodeIntegration: true,
-            contextIsolation: false
-        }
+            contextIsolation: false,
+        },
+        width: 1000,
+        height: 800,
     });
 
     mainWindow.loadFile('index.html');
@@ -86,7 +87,7 @@ ipcMain.on('accept-and-save', (event, data) => {
                 dialog.showMessageBox({
                     type: 'info',
                     message: '已保存！',
-                    detail: '知识点已存储到数据库中。'
+                    detail: '知识点已存储到数据库中。',
                 });
             } else {
                 // 显示消息提示保存失败
