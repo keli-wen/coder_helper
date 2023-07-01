@@ -3,7 +3,8 @@ const {
   ipcMain,
   dialog
 } = require('electron')
-const axios = require('axios');  // 你需要先使用 npm install axios 安装这个库
+const axios = require('axios');  // 你需要先使用 npm install axios 安装这个库。
+const { glob } = require('glob'); // 用于在目录中搜索文件。
 
 const fs = require('fs');
 const path = require('path');
@@ -111,4 +112,19 @@ ipcMain.on('markdownIt', (event, data) => {
         .catch(error => {
             console.log('Error:', error);
         });
+});
+
+// 下面是搜索文件的代码。
+const dataDir = path.join(__dirname, 'data/');
+
+ipcMain.on('search-files', (event, query) => {
+  fuzzyQuery = "*" + query.split(' ').join('*') + "*";
+  console.log("fuzzyQuery: " + fuzzyQuery);
+  try {
+    let files = glob.sync(fuzzyQuery, { cwd: dataDir });
+    console.log("glob finish");
+    event.sender.send('search-results', files);
+  } catch (err) {
+    console.error(err);
+  }
 });
