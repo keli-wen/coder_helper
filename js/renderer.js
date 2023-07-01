@@ -201,6 +201,10 @@ function displayResults(files) {
     indexCell.textContent = index + 1;
 
     const fileCell = document.createElement("td");
+    // 如果文件名 file 过长，我们将使用 ... 来截断它。
+    if (file.length > 50) {
+      file = file.substring(0, 50) + "...";
+    }
     fileCell.textContent = file;
 
     row.appendChild(indexCell);
