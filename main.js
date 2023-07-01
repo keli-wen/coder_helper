@@ -5,6 +5,7 @@ const {
 } = require('electron')
 const axios = require('axios');  // 你需要先使用 npm install axios 安装这个库。
 const { glob } = require('glob'); // 用于在目录中搜索文件。
+const { marked: markedMain } = require("marked"); // 用于将 Markdown 转换为 HTML。
 
 const fs = require('fs');
 const path = require('path');
@@ -122,9 +123,38 @@ ipcMain.on('search-files', (event, query) => {
   console.log("fuzzyQuery: " + fuzzyQuery);
   try {
     let files = glob.sync(fuzzyQuery, { cwd: dataDir });
+    // 去除重复的文件名。
+    files = [...new Set(files)];
+    console.log(files);
     console.log("glob finish");
     event.sender.send('search-results', files);
   } catch (err) {
     console.error(err);
   }
+});
+
+// 搜索结果预览功能。
+ipcMain.on('open-file-preview', (event, filePath) => {
+    fileName = path.basename(filePath);
+    if (fileName.length > 20) {
+        fileName = fileName.slice(0, 40) + '...md';
+    }
+    const previewWindow = new BrowserWindow({
+      title: fileName,
+      width: 800,
+      height: 600,
+      webPreferences: {
+        nodeIntegration: true,
+        contextIsolation: false,
+      },
+    });
+  
+    fs.readFile(filePath, 'utf-8', (err, data) => {
+      if (err) {
+        console.error('Could not open file: ', err);
+        return;
+      }
+      
+      previewWindow.loadURL(`data:text/html;charset=utf-8,${encodeURIComponent(markedMain(data))}`);
+    });
 });

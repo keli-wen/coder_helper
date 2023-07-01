@@ -6,12 +6,15 @@
         <link rel="stylesheet" href="../css/styles.css">
     </head>
 <body>
-    <h1>Settings</h1>
-    <p>This is the settings page. Here, you can customize your preferences and configurations.</p>
+    <h1 style="margin-bottom: 0.5em;"><b>🔍 Search</b></h1>
+    <p style="opacity: 0.8; font-size: large;">
+        <i>—— Please enter keywords, ask your <b style="color:firebrick">Coder Helper</b></i>
+        <img src="images/logo.png" alt="robot" style="width: 1.8em; height: 1.8em; margin-left: -0.2em;">
+    </p>
     
     <!-- Search bar -->
     <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Search..." id="search-input">
+        <input type="text" class="form-control" placeholder="Keyword1 Keyword2..." id="search-input" style="margin-right: 2em;">
         <div class="input-group-append">
             <button class="btn btn-outline-secondary" type="button" id="search-btn" onclick="searchFiles()">Search</button>
         </div>
@@ -42,12 +45,12 @@
     
 
     <!-- Pagination -->
-    <nav aria-label="Page navigation example">
+    <nav aria-label="Page navigation example" style="position: fixed; bottom: 0; margin-bottom: 10px;">
         <ul class="pagination">
             <li class="page-item"><a class="page-link" href="#">Previous</a></li>
             <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <!-- <li class="page-item"><a class="page-link" href="#">2</a></li> -->
+            <!-- <li class="page-item"><a class="page-link" href="#">3</a></li> -->
             <li class="page-item"><a class="page-link" href="#">Next</a></li>
         </ul>
     </nav>

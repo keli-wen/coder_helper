@@ -10,7 +10,6 @@ marked.setOptions({
 
 let isMarkdownPreview = false;
 
-
 function changeTab(tabName) {
   // Remove the active class from all tabs.
   const tabs = document.querySelectorAll(".tab");
@@ -186,6 +185,7 @@ ipcRenderer.on('search-results', (event, files) => {
   displayResults(files);
 });
 
+const previewDir = path.join(__dirname, 'data/');
 function displayResults(files) {
   // 我们将使用 table-body 元素来显示结果。
   const tableBody = document.getElementById("table-body");
@@ -203,9 +203,24 @@ function displayResults(files) {
     const fileCell = document.createElement("td");
     // 如果文件名 file 过长，我们将使用 ... 来截断它。
     if (file.length > 50) {
-      file = file.substring(0, 50) + "...";
+      cut_file = file.substring(0, 50) + "...";
+    } else {
+      // 否则，我们将使用原始文件名。
+      cut_file = file;
     }
-    fileCell.textContent = file;
+
+    // 添加预览功能。
+    let fileLink = document.createElement("a");
+
+    fileLink.textContent = cut_file;
+    fileLink.href = "#";
+
+    fileLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      ipcRenderer.send('open-file-preview', path.join(previewDir, file));
+    });
+
+    fileCell.appendChild(fileLink);
 
     row.appendChild(indexCell);
     row.appendChild(fileCell);
