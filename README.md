@@ -15,9 +15,13 @@ $ npm start
 
 ## 2. Examples
 
-### Example1
+### Example 🏠Home-Query
 
-![example1](examples/example1.gif)
+![example1](examples/example-query.gif)
+
+### Example 🔍Search
+
+![example1](examples/example-search.gif)
 
 ## 3. Prompt：How to develop it quick.
 
